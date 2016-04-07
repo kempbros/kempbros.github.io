@@ -19,7 +19,7 @@ menu:
   - title: 'Home'
     url: '/'
   - title: 'Projects'
-    url: '/projects"
+    url: '/projects'
 #  - title: 'Fork'
 #    url: 'http://github.com/kempbros/kempbros.github.io'
 # - title: 'Install'
