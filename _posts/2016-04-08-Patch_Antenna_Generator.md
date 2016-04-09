@@ -7,11 +7,20 @@ tags: [patch anntenna]
 categories: [stuff]
 ---
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
-<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
 
 WOOP!
 
-<div id="content"></div>
+<div id="content">
+<form class="form-horizontal">
+  <fieldset>
+    <legend>Legend</legend>
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Ghz</label>
+      <div class="col-lg-10">
+        <input type="number" class="form-control" id="inputGhz" placeholder="5.795">
+      </div>
+    </div>
+  </fieldset>
+</form
+</div>
 
