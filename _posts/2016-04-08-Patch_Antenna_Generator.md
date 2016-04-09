@@ -14,13 +14,13 @@ categories: [stuff]
 			<div class="form-group">
 				<label for="inputGhz" class="col-lg-2 control-label">Ghz</label>
 				<div class="col-lg-10">
-					<input type="number" class="form-control" id="inputGhz" placeholder="5.795">
+					<input type="number" class="form-control" id="inputGhz" placeholder="5.795" value="5.795">
 				</div>
 
 				<label for="inputDC" class="col-lg-2 control-label">Dialectric Constant</label>
 				<div class="col-lg-10">
 					<input type="number" class="form-control" id="inputDC" placeholder="4.5" value="4.5">
-					<div class="well">
+					<div class="well" style="display:none;">
 						The dielectric constant of FR4 (which is circuit board material) is typically 4.5
 					</div>
 				</div>
