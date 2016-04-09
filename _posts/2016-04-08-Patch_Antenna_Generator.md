@@ -17,17 +17,22 @@ categories: [stuff]
 					<input type="number" class="form-control" id="inputGhz" placeholder="5.795">
 				</div>
 
-				<label for="inputFoo" class="col-lg-2 control-label">Foo</label>
+				<label for="inputDC" class="col-lg-2 control-label">Dialectric Constant</label>
 				<div class="col-lg-10">
-					<input type="number" class="form-control" id="inputFoo" placeholder="4.5">
+					<input type="number" class="form-control" id="inputDC" placeholder="4.5" value="4.5">
+					<div class="well">
+						The dielectric constant of FR4 (which is circuit board material) is typically 4.5
+					</div>
 				</div>
 
-				<label for="inputBar" class="col-lg-2 control-label">Bar</label>
+				<label for="inputH" class="col-lg-2 control-label">Dielectric Height in mm</label>
 				<div class="col-lg-10">
-					<input type="number" class="form-control" id="inputBar" placeholder="1.5">
+					<input type="number" class="form-control" id="inputH" placeholder="1.5" value="1.5">
 				</div>
 			</div>
-				<a href="#" id="generateAntenna" class="btn btn-primary">Generate</a>
+				<p>
+					<a href="#" id="generateAntenna" class="btn btn-primary">Generate</a>
+				</p>
 		</fieldset>
 	</form>
 </div>
@@ -37,31 +42,31 @@ categories: [stuff]
 
 	function drawAntenna() {
 		var ghz = $( '#inputGhz' ).val();
-		var foo = $( '#inputFoo' ).val();
-		var bar = $( '#inputBar' ).val();
+		var dc = $( '#inputDC' ).val();
+		var inputH = $( '#inputBar' ).val();
 		
-    var antenna = {};
-
+		var antenna = {};
+		
 		antenna.f_zero = ghz * 1000000000;
 
-    antenna.sum_R = foo;
+		antenna.sum_R = dc;
 
-    antenna.h = bar / 1000;
+		antenna.h = inputH / 1000;
 
 
-    antenna.width = (c/((2*antenna.f_zero)*Math.pow((antenna.sum_R+1)/2, 0.5 ) ));
+		antenna.width = (c/((2*antenna.f_zero)*Math.pow((antenna.sum_R+1)/2, 0.5 ) ));
 
-    antenna.sum_eff = Math.pow( ((antenna.sum_R+1)/2)+((antenna.sum_R-1)/2)*(1+12*(antenna.h/antenna.width)), (-1/2) );
+		antenna.sum_eff = Math.pow( ((antenna.sum_R+1)/2)+((antenna.sum_R-1)/2)*(1+12*(antenna.h/antenna.width)), (-1/2) );
 
-    antenna.L_eff = c/(2*antenna.f_zero*Math.pow(antenna.sum_eff, 0.5));
+		antenna.L_eff = c/(2*antenna.f_zero*Math.pow(antenna.sum_eff, 0.5));
 
-    antenna.delta_L = (0.412*antenna.h)*(((antenna.sum_eff+0.3)*((antenna.width/antenna.h)+0.264))/((antenna.sum_eff-0.258)*((antenna.width/antenna.h)+0.8)));
+		antenna.delta_L = (0.412*antenna.h)*(((antenna.sum_eff+0.3)*((antenna.width/antenna.h)+0.264))/((antenna.sum_eff-0.258)*((antenna.width/antenna.h)+0.8)));
 
-    antenna.height = antenna.L_Eff-2*(antenna.delta_L);
+		antenna.height = antenna.L_Eff-2*(antenna.delta_L);
 
-    antenna.length = antenna.L_eff-2*(antenna.delta_L);
+		antenna.length = antenna.L_eff-2*(antenna.delta_L);
 
-    console.log( antenna );
+		console.log( antenna );
 		
 	}
 
