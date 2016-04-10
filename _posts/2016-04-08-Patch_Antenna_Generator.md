@@ -56,7 +56,7 @@ categories: [stuff]
 
 		antenna.width = (c/((2*antenna.f_zero)*Math.sqrt((antenna.sum_R+1)/2)));
 
-		antenna.sum_eff = Math.pow( ((antenna.sum_R+1)/2)+((antenna.sum_R-1)/2)*(1+12*(antenna.h/antenna.width)), (-1/2) );
+		antenna.sum_eff = ((antenna.sum_R+1)/2)+((antenna.sum_R-1)/2)* Math.pow( (1+12*(antenna.h/antenna.width)), (-1/2) );
 
 		antenna.L_eff = c/(2*antenna.f_zero*Math.sqrt(antenna.sum_eff ));
 
