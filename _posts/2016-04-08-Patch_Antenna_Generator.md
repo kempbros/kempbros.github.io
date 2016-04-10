@@ -66,6 +66,74 @@ categories: [stuff]
 
 		antenna.length = antenna.L_eff-2*(antenna.delta_L);
 
+		antenna.Q0 = (c*Math.sqrt(antenna.sum_R))/(4*antenna.f_zero*antenna.h);
+
+		antenna.delta_ss = 1/(2*antenna.Q0);
+
+		antenna.corner_a = antenna.length*Math.sqrt(antenna.delta_ss);
+
+		antenna.feed_y = antenna.length/(2*Math.sqrt(antenna.sum_R ) );
+
+		antenna.feed_x = antenna.width/2;
+
+		antenna.groundplane = {};
+
+		antenna.groundplane.width = antenna.width +( antenna.h*4);
+
+		antenna.groundplane.length = antenna.length+( antenna.h * 4);
+
+		antenna.coordinates = {
+			'feed': { 'X0': (antenna.groundplane.width * 1000 )/2,
+						'Y0': (((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2)+(antenna.feed_y * 1000 )
+					},
+			'groundplane': { 'X0': 0,
+						'Y0': 0,
+						'X1': (antenna.groundplane.width * 1000 ),
+						'Y1': 0,
+						'X2': (antenna.groundplane.width * 1000 ),
+						'Y2': (antenna.groundplane.length * 1000 ),
+						'X3': 0,
+						'Y3': (antenna.groundplane.length * 1000 )
+					},
+			'lp_patch': { 'X0': ((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2,
+						'Y0': ((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2,
+						'X1': (((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2)+(antenna.width * 1000 ),
+						'Y1': ((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2,
+						'X2': (((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2)+(antenna.width * 1000 ),
+						'Y2': (((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2)+(antenna.length * 1000 ),
+						'X3': ((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2,
+						'Y3': (((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2)+(antenna.length * 1000 )
+					},
+			'rhp_patch': { 'X0': (((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2)+(antenna.corner_a * 1000 ),
+						'Y0': ((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2,
+						'X1': (((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2)+(antenna.width * 1000 ),
+						'Y1': ((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2,
+						'X2': (((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2)+(antenna.width * 1000 ),
+						'Y2': ((((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2)+(antenna.length * 1000 ))-(antenna.corner_a * 1000 ),
+						'X3': ((((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2)+(antenna.width * 1000 ))-(antenna.corner_a * 1000 ),
+						'Y3': (((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2)+(antenna.length * 1000 ),
+						'X4': ((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2,
+						'Y4': (((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2)+(antenna.length * 1000 ),
+						'X5': ((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2,
+						'Y5': (((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2)+(antenna.corner_a * 1000 )
+					},
+			'lhp_patch': { 'X0': ((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2,
+						'Y0': ((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2,
+						'X1': ((((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2)+(antenna.width * 1000 ))-(antenna.corner_a * 1000 ),
+						'Y1': ((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2,
+						'X2': (((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2)+(antenna.width * 1000 ),
+						'Y2': (((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2)+(antenna.corner_a * 1000 ),
+						'X3': (((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2)+(antenna.width * 1000 ),
+						'Y3': (((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2)+(antenna.length * 1000 ),
+						'X4': (((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2)+(antenna.corner_a * 1000 ),
+						'Y4': (((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2)+(antenna.length * 1000 ),
+						'X5': ((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2,
+						'Y5': ((((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2)+(antenna.length * 1000 ))-(antenna.corner_a * 1000 )
+					}
+		};
+
+
+
 		console.log( antenna );
 		
 	}
