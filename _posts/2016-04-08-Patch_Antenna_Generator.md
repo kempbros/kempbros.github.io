@@ -43,8 +43,8 @@ categories: [stuff]
 	function drawAntenna() {
 		var ghz = $( '#inputGhz' ).val();
 		var dc = $( '#inputDC' ).val();
-		var inputH = $( '#inputBar' ).val();
-		
+		var inputH = $( '#inputH' ).val();
+
 		var antenna = {};
 		
 		antenna.f_zero = ghz * 1000000000;
