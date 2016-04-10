@@ -41,9 +41,9 @@ categories: [stuff]
 	var c = 299792458;
 
 	function drawAntenna() {
-		var ghz = $( '#inputGhz' ).val();
-		var dc = $( '#inputDC' ).val();
-		var inputH = $( '#inputH' ).val();
+		var ghz = parseFloat( $( '#inputGhz' ).val() );
+		var dc = parseFloat( $( '#inputDC' ).val() );
+		var inputH = parseFloat( $( '#inputH' ).val() );
 
 		var antenna = {};
 		
