@@ -54,15 +54,15 @@ categories: [stuff]
 		antenna.h = inputH / 1000;
 
 
-		antenna.width = (c/((2*antenna.f_zero)*Math.pow((antenna.sum_R+1)/2, 0.5 ) ));
+		antenna.width = (c/((2*antenna.f_zero)*Math.sqrt((antenna.sum_R+1)/2)));
 
 		antenna.sum_eff = Math.pow( ((antenna.sum_R+1)/2)+((antenna.sum_R-1)/2)*(1+12*(antenna.h/antenna.width)), (-1/2) );
 
-		antenna.L_eff = c/(2*antenna.f_zero*Math.pow(antenna.sum_eff, 0.5));
+		antenna.L_eff = c/(2*antenna.f_zero*Math.sqrt(antenna.sum_eff ));
 
 		antenna.delta_L = (0.412*antenna.h)*(((antenna.sum_eff+0.3)*((antenna.width/antenna.h)+0.264))/((antenna.sum_eff-0.258)*((antenna.width/antenna.h)+0.8)));
 
-		antenna.height = antenna.L_Eff-2*(antenna.delta_L);
+		antenna.width = ( c/((2*antenna.f_zero)*Math.sqrt((antenna.sum_R+1)/2)));
 
 		antenna.length = antenna.L_eff-2*(antenna.delta_L);
 
