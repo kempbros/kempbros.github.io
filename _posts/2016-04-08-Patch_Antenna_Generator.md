@@ -30,6 +30,8 @@ categories: [antennas]
 
 </style>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
 <div id="content">
 	<div class="row">
 		<div class="col-lg-2">
@@ -292,22 +294,40 @@ categories: [antennas]
 
 				
 			});
-
-			eagle_scr = "BRD:" + '\r';
-			eagle_scr += "GRID MM" + '\r';
-			eagle_scr += "CHANGE ISOLATE 0" + '\r';
-			eagle_scr += "SET WIRE_BEND 2" + '\r';
-			eagle_scr += "LAYER Dimension" + '\r';
-			eagle_scr += "WIRE" + '\r';
-			eagle_scr += "POLYGON 'GND'" + '\r';
-			eagle_scr += "LAYER Top" + '\r';
-			eagle_scr += "POLYGON 'PATCH'" + '\r';
-			eagle_scr += "CHANGE DRILL 1" + '\r';
-			eagle_scr += "VIA 'PATCH' auto round" + '\r';
-			eagle_scr += "RATSNEST";
-
-			$( '#eagle' ).html( eagle_scr );
 		}
+
+		c = antenna.coordinates;
+
+		eagle_scr = "BRD:" + '\r';
+		eagle_scr += "GRID MM" + '\r';
+		eagle_scr += "CHANGE ISOLATE 0" + '\r';
+		eagle_scr += "SET WIRE_BEND 2" + '\r';
+		eagle_scr += "LAYER Dimension" + '\r';
+		eagle_scr += "WIRE 0.0 (" + c.groundplane.X0 + ' ' + c.groundplane.Y0 + ') ';
+			eagle_scr += '(' + c.groundplane.X1 + ' ' + c.groundplane.Y1 + ') ';
+			eagle_scr += '(' + c.groundplane.X2 + ' ' + c.groundplane.Y2 + ') ';
+			eagle_scr += '(' + c.groundplane.X3 + ' ' + c.groundplane.Y3 + ') ';
+			eagle_scr += '(' + c.groundplane.X4 + ' ' + c.groundplane.Y4 + ') ';
+			eagle_scr += '(0 0)' + '\r';
+		eagle_scr += "POLYGON 'GND' 0.0 (" + c.groundplane.X0 + ' ' + c.groundplane.Y0 + ') ';
+			eagle_scr += '(' + c.groundplane.X1 + ' ' + c.groundplane.Y1 + ') ';
+			eagle_scr += '(' + c.groundplane.X2 + ' ' + c.groundplane.Y2 + ') ';
+			eagle_scr += '(' + c.groundplane.X3 + ' ' + c.groundplane.Y3 + ') ';
+			eagle_scr += '(' + c.groundplane.X4 + ' ' + c.groundplane.Y4 + ') ';
+			eagle_scr += '(0 0)' + '\r';
+		eagle_scr += "LAYER Top" + '\r';
+		eagle_scr += "POLYGON 'PATCH'"+ c.rhp_patch.X0 + ' ' + c.rhp_patch.Y0 + ') ';
+			eagle_scr += '(' + c.rhp_patch.X1 + ' ' + c.rhp_patch.Y1 + ') ';
+			eagle_scr += '(' + c.rhp_patch.X2 + ' ' + c.rhp_patch.Y2 + ') ';
+			eagle_scr += '(' + c.rhp_patch.X3 + ' ' + c.rhp_patch.Y3 + ') ';
+			eagle_scr += '(' + c.rhp_patch.X4 + ' ' + c.rhp_patch.Y4 + ') ';
+			eagle_scr += '(' + c.rhp_patch.X4 + ' ' + c.rhp_patch.Y4 + ') ';
+			eagle_scr += '(' + c.rhp_patch.Y4 + ' ' + c.rhp_patch.X4 + ')' + '\r';
+		eagle_scr += "CHANGE DRILL 1" + '\r';
+		eagle_scr += "VIA 'PATCH' auto round" + ' (' + c.feed.X0 + ' ' + c.feed.X1 + ')' + '\r';
+		eagle_scr += "RATSNEST";
+
+		$( '#eagle' ).html( eagle_scr );
 
 
 
