@@ -7,45 +7,190 @@ tags: [patch anntenna]
 categories: [stuff]
 ---
 
+<style>
+		table {
+			border-collapse: collapse;
+		}
+
+		tr.border_bottom th {
+			border-bottom: 1px solid black;
+		}
+
+		tr.border_bottom td {
+			border-bottom: 1px solid black;
+		}
+
+		.border_right {
+			border-right: 1px solid black;
+		}
+
+		.section {
+			padding-top: 1em;
+		}
+
+</style>
+
 <div id="content">
-	<form class="form-horizontal">
-		<fieldset>
-			<legend>Input</legend>
-			<div class="form-group">
-				<label for="inputGhz" class="col-lg-2 control-label">Ghz</label>
-				<div class="col-lg-10">
-					<input type="number" class="form-control" id="inputGhz" placeholder="5.795" value="5.795">
-				</div>
+	<div class="row">
+		<div class="col-lg-2">
+			<form class="form-horizontal">
+				<fieldset>
+					<legend>Input</legend>
+					<div class="form-group">
+						<label for="inputGhz" class="col-lg-2 control-label">Ghz</label>
+						<div class="col-lg-10">
+							<input type="number" class="form-control" id="inputGhz" placeholder="5.795" value="5.795">
+						</div>
 
-				<label for="inputDC" class="col-lg-2 control-label">Dialectric Constant</label>
-				<div class="col-lg-10">
-					<input type="number" class="form-control" id="inputDC" placeholder="4.5" value="4.5">
-					<div class="well" style="display:none;">
-						The dielectric constant of FR4 (which is circuit board material) is typically 4.5
+						<label for="inputDC" class="col-lg-2 control-label">Dialectric Constant</label>
+						<div class="col-lg-10">
+							<input type="number" class="form-control" id="inputDC" placeholder="4.5" value="4.5">
+							<div class="well" style="display:none;">
+								The dielectric constant of FR4 (which is circuit board material) is typically 4.5
+							</div>
+						</div>
+
+						<label for="inputH" class="col-lg-2 control-label">Dielectric Height in mm</label>
+						<div class="col-lg-10">
+							<input type="number" class="form-control" id="inputH" placeholder="1.5" value="1.5">
+						</div>
 					</div>
-				</div>
+						<p>
+							<button id="generateAntenna" class="btn btn-primary">Generate</button>
+						</p>
+				</fieldset>
+			</form>
+		</div>
+	</div>
 
-				<label for="inputH" class="col-lg-2 control-label">Dielectric Height in mm</label>
-				<div class="col-lg-10">
-					<input type="number" class="form-control" id="inputH" placeholder="1.5" value="1.5">
-				</div>
-			</div>
+	<br />
+
+	<div class="row">
+		<div class="col-lg-12">
+			<fieldset>
+				<legend>Eagle Script</legend>
+				<textarea id="eagle" style="width: 100%;" rows="12"></textarea>
 				<p>
-					<a href="#" id="generateAntenna" class="btn btn-primary">Generate</a>
+					<button id="saveEagle" class="btn btn-primary">Save</button>
 				</p>
-		</fieldset>
-	</form>
+			</fieldset>
+		</div>
+	</div>
+
+	<br />
+
+	<div class="row">
+		<div class="col-lg-12" class="section">
+			<table>
+				<thead>
+					<tr class="border_bottom">
+						<th class="border_right">Coordinates</th>
+						<th class="border_right">X0</th>
+						<th class="border_right">Y0</th>
+						<th class="border_right">X1</th>
+						<th class="border_right">Y1</th>
+						<th class="border_right">X2</th>
+						<th class="border_right">Y2</th>
+						<th class="border_right">X3</th>
+						<th class="border_right">Y3</th>
+						<th class="border_right">X4</th>
+						<th class="border_right">Y4</th>
+						<th class="border_right">X5</th>
+						<th>Y5</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="border_bottom">
+						<td class="border_right">Feed</td>
+						<td id="feed_X0" class="border_right"></td>
+						<td id="feed_Y0" class="border_right"></td>
+						<td id="feed_X1" class="border_right"></td>
+						<td id="feed_Y1" class="border_right"></td>
+						<td id="feed_X2" class="border_right"></td>
+						<td id="feed_Y2" class="border_right"></td>
+						<td id="feed_X3" class="border_right"></td>
+						<td id="feed_Y3" class="border_right"></td>
+						<td id="feed_X4" class="border_right"></td>
+						<td id="feed_Y4" class="border_right"></td>
+						<td id="feed_X5" class="border_right"></td>
+						<td id="feed_Y5"></td>
+					</tr>
+					<tr class="border_bottom">
+						<td class="border_right">Groundplane</td>
+						<td id="groundplane_X0" class="border_right"></td>
+						<td id="groundplane_Y0" class="border_right"></td>
+						<td id="groundplane_X1" class="border_right"></td>
+						<td id="groundplane_Y1" class="border_right"></td>
+						<td id="groundplane_X2" class="border_right"></td>
+						<td id="groundplane_Y2" class="border_right"></td>
+						<td id="groundplane_X3" class="border_right"></td>
+						<td id="groundplane_Y3" class="border_right"></td>
+						<td id="groundplane_X4" class="border_right"></td>
+						<td id="groundplane_Y4" class="border_right"></td>
+						<td id="groundplane_X5" class="border_right"></td>
+						<td id="groundplane_Y5"></td>
+					</tr>
+					<tr class="border_bottom">
+						<td class="border_right">LP Patch</td>
+						<td id="lp_patch_X0" class="border_right"></td>
+						<td id="lp_patch_Y0" class="border_right"></td>
+						<td id="lp_patch_X1" class="border_right"></td>
+						<td id="lp_patch_Y1" class="border_right"></td>
+						<td id="lp_patch_X2" class="border_right"></td>
+						<td id="lp_patch_Y2" class="border_right"></td>
+						<td id="lp_patch_X3" class="border_right"></td>
+						<td id="lp_patch_Y3" class="border_right"></td>
+						<td id="lp_patch_X4" class="border_right"></td>
+						<td id="lp_patch_Y4" class="border_right"></td>
+						<td id="lp_patch_X5" class="border_right"></td>
+						<td id="lp_patch_Y5"></td>
+					</tr>
+					<tr class="border_bottom">
+						<td class="border_right">RHP Patch</td>
+						<td id="rhp_patch_X0" class="border_right"></td>
+						<td id="rhp_patch_Y0" class="border_right"></td>
+						<td id="rhp_patch_X1" class="border_right"></td>
+						<td id="rhp_patch_Y1" class="border_right"></td>
+						<td id="rhp_patch_X2" class="border_right"></td>
+						<td id="rhp_patch_Y2" class="border_right"></td>
+						<td id="rhp_patch_X3" class="border_right"></td>
+						<td id="rhp_patch_Y3" class="border_right"></td>
+						<td id="rhp_patch_X4" class="border_right"></td>
+						<td id="rhp_patch_Y4" class="border_right"></td>
+						<td id="rhp_patch_X5" class="border_right"></td>
+						<td id="rhp_patch_Y5"></td>
+					</tr>
+					<tr>
+						<td class="border_right">LHP Patch</td>
+						<td id="lhp_patch_X0" class="border_right"></td>
+						<td id="lhp_patch_Y0" class="border_right"></td>
+						<td id="lhp_patch_X1" class="border_right"></td>
+						<td id="lhp_patch_Y1" class="border_right"></td>
+						<td id="lhp_patch_X2" class="border_right"></td>
+						<td id="lhp_patch_Y2" class="border_right"></td>
+						<td id="lhp_patch_X3" class="border_right"></td>
+						<td id="lhp_patch_Y3" class="border_right"></td>
+						<td id="lhp_patch_X4" class="border_right"></td>
+						<td id="lhp_patch_Y4" class="border_right"></td>
+						<td id="lhp_patch_X5" class="border_right"></td>
+						<td id="lhp_patch_Y5"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
 
 <script>
 	var c = 299792458;
+	var antenna = {};
 
 	function drawAntenna() {
 		var ghz = parseFloat( $( '#inputGhz' ).val() );
 		var dc = parseFloat( $( '#inputDC' ).val() );
 		var inputH = parseFloat( $( '#inputH' ).val() );
 
-		var antenna = {};
+		antenna = {};
 		
 		antenna.f_zero = ghz * 1000000000;
 
@@ -132,12 +277,58 @@ categories: [stuff]
 					}
 		};
 
+		for ( var coord_type in antenna.coordinates ) {
+			
+			[0,1,2,3,4,5].forEach( function( step ) {
+				x = '';
+				y = '';
+				if ( antenna.coordinates[ coord_type ].hasOwnProperty( 'X' + step ) ) {
+					x = antenna.coordinates[ coord_type ][ 'X' + step ].toFixed( 2 );
+					y = antenna.coordinates[ coord_type ][ 'Y' + step ].toFixed( 2 );
+				}
+
+				$( '#' + coord_type + '_X' + step ).html( x );
+				$( '#' + coord_type + '_Y' + step ).html( y );
+
+				
+			});
+
+			eagle_scr = "BRD:" + '\r';
+			eagle_scr += "GRID MM" + '\r';
+			eagle_scr += "CHANGE ISOLATE 0" + '\r';
+			eagle_scr += "SET WIRE_BEND 2" + '\r';
+			eagle_scr += "LAYER Dimension" + '\r';
+			eagle_scr += "WIRE" + '\r';
+			eagle_scr += "POLYGON 'GND'" + '\r';
+			eagle_scr += "LAYER Top" + '\r';
+			eagle_scr += "POLYGON 'PATCH'" + '\r';
+			eagle_scr += "CHANGE DRILL 1" + '\r';
+			eagle_scr += "VIA 'PATCH' auto round" + '\r';
+			eagle_scr += "RATSNEST";
+
+			$( '#eagle' ).html( eagle_scr );
+		}
 
 
-		console.log( antenna );
-		
+
 	}
 
-	$( '#generateAntenna' ).click( drawAntenna() );
+	$( '#generateAntenna' ).click( function( e ) {
+		e.preventDefault();
+		drawAntenna();
+	});
+
+	$( '#saveEagle' ).click( function( e ) {
+		e.preventDefault();
+		save_eagle( $( '#eagle' ).html() );
+	});
+
+	function save_eagle( scr ) {
+		var tempElement = document.createElement( 'a' );
+		tempElement.href = 'data:attachment/text,' + encodeURI( scr );
+		tempElement.target = '_blank';
+		tempElement.download = 'KempBros_Patch_Antenna.txt';
+		tempElement.click();
+	}
 </script>
 
