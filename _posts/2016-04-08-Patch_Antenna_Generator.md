@@ -8,25 +8,25 @@ categories: [antennas]
 ---
 
 <style>
-		table {
-			border-collapse: collapse;
-		}
+	table {
+		border-collapse: collapse;
+	}
 
-		tr.border_bottom th {
-			border-bottom: 1px solid black;
-		}
+	tr.border_bottom th {
+		border-bottom: 1px solid black;
+	}
 
-		tr.border_bottom td {
-			border-bottom: 1px solid black;
-		}
+	tr.border_bottom td {
+		border-bottom: 1px solid black;
+	}
 
-		.border_right {
-			border-right: 1px solid black;
-		}
+	.border_right {
+		border-right: 1px solid black;
+	}
 
-		.section {
-			padding-top: 1em;
-		}
+	.section {
+		padding-top: 1em;
+	}
 
 </style>
 
@@ -35,18 +35,18 @@ categories: [antennas]
 
 <div id="content">
 	<div class="row">
-		<div class="col-lg-2" style="width: 40%;">
+		<div class="column" style="width: 40%; display: inline-block;">
 			<form class="form-horizontal">
 				<fieldset>
 					<legend>Input</legend>
 					<div class="form-group">
 						<label for="inputGhz" class="col-lg-2 control-label">Ghz</label>
-						<div class="col-lg-10">
+						<div class="col-lg-10" style="padding-bottom: 1em;">
 							<input type="number" class="form-control" id="inputGhz" placeholder="5.795" value="5.795">
 						</div>
 
 						<label for="inputDC" class="col-lg-2 control-label">Dialectric Constant</label>
-						<div class="col-lg-10">
+						<div class="col-lg-10" style="padding-bottom: 1em;">
 							<input type="number" class="form-control" id="inputDC" placeholder="4.5" value="4.5">
 							<div class="well" style="display:none;">
 								The dielectric constant of FR4 (which is circuit board material) is typically 4.5
@@ -54,9 +54,16 @@ categories: [antennas]
 						</div>
 
 						<label for="inputH" class="col-lg-2 control-label">Dielectric Height in mm</label>
-						<div class="col-lg-10">
+						<div class="col-lg-10" style="padding-bottom: 1em;">
 							<input type="number" class="form-control" id="inputH" placeholder="1.5" value="1.5">
 						</div>
+
+						<label for="eagle_type">Antenna Type</label>
+						<select id="eagle_type">
+							<option value="rhp_patch">RHP Patch</option>
+							<option value="lhp_patch">LHP Patch</option>
+							<option value="lp_patch">Linear Patch</option>
+						</select>
 					</div>
 						<p>
 							<button id="generateAntenna" class="btn btn-primary">Generate</button>
@@ -64,8 +71,10 @@ categories: [antennas]
 				</fieldset>
 			</form>
 		</div>
-		<div class="col-lg-6">
-			<svg id="antenna_svg"></svg>
+		<div id="antenna_container" style="display: inline-block; margin: auto; vertical-align: top; padding-left: 25%; padding-top: 25%;">
+			<svg id="antenna_svg">
+				<g id="antenna_patch_group" transform="scale( 3.543307 )"></g>				
+			</svg>
 		</div>
 	</div>
 
@@ -76,14 +85,6 @@ categories: [antennas]
 			<fieldset>
 				<legend>Eagle Script</legend>
 				<textarea id="eagle" style="width: 100%;" rows="14"></textarea>
-				<p>
-					<label for="eagle_type">Antenna Type</label>
-					<select id="eagle_type">
-						<option value="rhp_patch">RHP Patch</option>
-						<option value="lhp_patch">LHP Patch</option>
-						<option value="lp_patch">Linear Patch</option>
-					</select>
-				</p>
 				<p>
 					<button id="saveEagle" class="btn btn-primary">Save</button>
 				</p>
@@ -371,22 +372,35 @@ categories: [antennas]
 
 
 	function create_svg( antenna ) {
+		// Clear out the old patch
+		$( '#antenna_patch_group' ).html( '' );
 		type = $( '#eagle_type' ).val();
 		svg = d3.select( '#antenna_svg' );
+		antenna_patch_group = d3.select( '#antenna_patch_group' );
 
 		c = antenna.coordinates;
 
-		svg.attr( "width", c.groundplane.X1 );
-		svg.attr( "height", c.groundplane.Y1 );
+		svg.attr( "width", c.groundplane.X1 + 'mm' );
+		svg.attr( "height", c.groundplane.Y2 + 'mm' );
+
 
 		patch_polygon = [];
 
 
-		for ( var coord in c[ type ] ) {
+		[0,1,2,3,4,5].forEach( function( step ) {
+			if ( c[ type ].hasOwnProperty( 'X' + step ) ) {
+				patch_polygon.push( c[ type ][ 'X' + step ].toFixed( 2 ) + ',' + c[ type ][ 'Y' + step ].toFixed( 2 ) );
+			}
 
-		}
+		})
 
-
+		antenna_patch_group.selectAll( 'polygon' )
+			.data( [ patch_polygon ] )
+			.enter()
+			.append( 'polygon' )
+			.attr( 'points', patch_polygon.join( ' ' ) )
+			.attr( 'stroke','black' )
+			.attr( 'stroke-width',2 );
 	}
 
 
