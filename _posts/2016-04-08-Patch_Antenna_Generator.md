@@ -31,6 +31,7 @@ categories: [antennas]
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
 
 <div id="content">
 	<div class="row">
@@ -64,7 +65,7 @@ categories: [antennas]
 			</form>
 		</div>
 		<div class="col-lg-6">
-			<span></span>
+			<svg id="antenna_svg"></svg>
 		</div>
 	</div>
 
@@ -313,6 +314,7 @@ categories: [antennas]
 		}
 
 		create_eagle( antenna );
+		create_svg( antenna );
 
 		return antenna;
 
@@ -356,6 +358,20 @@ categories: [antennas]
 	}
 
 
+	function create_svg( antenna ) {
+		type = $( '#eagle_type' ).val();
+		svg = d3.select( '#antenna_svg' );
+
+		c = antenna.coordinates;
+
+		svg.attr( "width", c.groundplane.X1 );
+		svg.attr( "height", c.groundplane.Y1 );
+
+		
+
+	}
+
+
 	$( '#generateAntenna' ).click( function( e ) {
 		e.preventDefault();
 		antenna = drawAntenna();
@@ -367,7 +383,9 @@ categories: [antennas]
 	});
 
 	$( '#eagle_type' ).change( function() {
-		create_eagle( drawAntenna() );
+		antenna = drawAntenna();
+		create_eagle( antenna );
+		create_svg( antenna );
 	});
 
 	function save_eagle( scr ) {
