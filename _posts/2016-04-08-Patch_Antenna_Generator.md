@@ -34,7 +34,7 @@ categories: [antennas]
 
 <div id="content">
 	<div class="row">
-		<div class="col-lg-2">
+		<div class="col-lg-2" style="width: 40%;">
 			<form class="form-horizontal">
 				<fieldset>
 					<legend>Input</legend>
@@ -63,6 +63,9 @@ categories: [antennas]
 				</fieldset>
 			</form>
 		</div>
+		<div class="col-lg-6">
+			<span></span>
+		</div>
 	</div>
 
 	<br />
@@ -71,7 +74,14 @@ categories: [antennas]
 		<div class="col-lg-12">
 			<fieldset>
 				<legend>Eagle Script</legend>
-				<textarea id="eagle" style="width: 100%;" rows="12"></textarea>
+				<textarea id="eagle" style="width: 100%;" rows="14"></textarea>
+				<p>
+					<label for="eagle_type">Antenna Type</label>
+					<select id="eagle_type">
+						<option value="rhp_patch">RHP Patch</option>
+						<option value="lhp_patch">LHP Patch</option>
+					</select>
+				</p>
 				<p>
 					<button id="saveEagle" class="btn btn-primary">Save</button>
 				</p>
@@ -302,8 +312,16 @@ categories: [antennas]
 			});
 		}
 
-		c = antenna.coordinates;
+		create_eagle( antenna );
 
+		return antenna;
+
+	}
+
+	function create_eagle( antenna ) {
+		type = $( '#eagle_type' ).val();
+
+		c = antenna.coordinates;
 		eagle_scr = "BRD:" + '\r';
 		eagle_scr += "GRID MM" + '\r';
 		eagle_scr += "CHANGE ISOLATE 0" + '\r';
@@ -314,33 +332,33 @@ categories: [antennas]
 			eagle_scr += '(' + c.groundplane.X2 + ' ' + c.groundplane.Y2 + ') ';
 			eagle_scr += '(' + c.groundplane.X3 + ' ' + c.groundplane.Y3 + ') ';
 			eagle_scr += '(0 0)' + '\r';
+		eagle_scr += "LAYER Bottom" + '\r';
 		eagle_scr += "POLYGON 'GND' 0.0 (" + c.groundplane.X0 + ' ' + c.groundplane.Y0 + ') ';
 			eagle_scr += '(' + c.groundplane.X1 + ' ' + c.groundplane.Y1 + ') ';
 			eagle_scr += '(' + c.groundplane.X2 + ' ' + c.groundplane.Y2 + ') ';
 			eagle_scr += '(' + c.groundplane.X3 + ' ' + c.groundplane.Y3 + ') ';
 			eagle_scr += '(0 0)' + '\r';
 		eagle_scr += "LAYER Top" + '\r';
-		eagle_scr += "POLYGON 'PATCH' 0.0 ("+ c.rhp_patch.X0 + ' ' + c.rhp_patch.Y0 + ') ';
-			eagle_scr += '(' + c.rhp_patch.X1 + ' ' + c.rhp_patch.Y1 + ') ';
-			eagle_scr += '(' + c.rhp_patch.X2 + ' ' + c.rhp_patch.Y2 + ') ';
-			eagle_scr += '(' + c.rhp_patch.X3 + ' ' + c.rhp_patch.Y3 + ') ';
-			eagle_scr += '(' + c.rhp_patch.X4 + ' ' + c.rhp_patch.Y4 + ') ';
-			eagle_scr += '(' + c.rhp_patch.X4 + ' ' + c.rhp_patch.Y4 + ') ';
-			eagle_scr += '(' + c.rhp_patch.Y4 + ' ' + c.rhp_patch.X4 + ')' + '\r';
+		eagle_scr += "POLYGON 'PATCH' 0.0 ("+ c[ type ].X0 + ' ' + c[ type ].Y0 + ') ';
+			eagle_scr += '(' + c[ type ].X1 + ' ' + c[ type ].Y1 + ') ';
+			eagle_scr += '(' + c[ type ].X2 + ' ' + c[ type ].Y2 + ') ';
+			eagle_scr += '(' + c[ type ].X3 + ' ' + c[ type ].Y3 + ') ';
+			eagle_scr += '(' + c[ type ].X4 + ' ' + c[ type ].Y4 + ') ';
+			eagle_scr += '(' + c[ type ].X5 + ' ' + c[ type ].Y5 + ') ';
+			eagle_scr += '(' + c[ type ].Y5 + ' ' + c[ type ].X5 + ')' + '\r';
 		eagle_scr += "CHANGE DRILL 1" + '\r';
-		eagle_scr += "VIA 'PATCH' auto round" + ' (' + c.feed.X0 + ' ' + c.feed.X1 + ')' + '\r';
+		eagle_scr += "VIA 'PATCH' auto round" + ' (' + c.feed.X0 + ' ' + c.feed.Y0 + ')' + '\r';
 		eagle_scr += "RATSNEST";
 
 		$( '#eagle' ).html( '' );
 		$( '#eagle' ).html( eagle_scr );
 
-
-
 	}
+
 
 	$( '#generateAntenna' ).click( function( e ) {
 		e.preventDefault();
-		drawAntenna();
+		antenna = drawAntenna();
 	});
 
 	$( '#saveEagle' ).click( function( e ) {
@@ -348,11 +366,17 @@ categories: [antennas]
 		save_eagle( $( '#eagle' ).html() );
 	});
 
+	$( '#eagle_type' ).change( function() {
+		create_eagle( drawAntenna() );
+	});
+
 	function save_eagle( scr ) {
+		type = $( '#eagle_type' ).val();
+
 		var tempElement = document.createElement( 'a' );
 		tempElement.href = 'data:attachment/text,' + encodeURI( scr );
 		tempElement.target = '_blank';
-		tempElement.download = 'KempBros_Patch_Antenna.txt';
+		tempElement.download = 'KempBros_Patch_Antenna_' + type + '.txt';
 		tempElement.click();
 	}
 </script>
