@@ -184,15 +184,19 @@ categories: [antennas]
 </div>
 
 <script>
-	var c = 299792458;
 	var antenna = {};
 
 	function drawAntenna() {
 		var ghz = parseFloat( $( '#inputGhz' ).val() );
 		var dc = parseFloat( $( '#inputDC' ).val() );
 		var inputH = parseFloat( $( '#inputH' ).val() );
+		var c = 299792458;
 
 		antenna = {};
+
+		antenna.ghz = ghz;
+		antenna.dc = dc;
+		antenna.inputH = inputH;
 		
 		antenna.f_zero = ghz * 1000000000;
 
