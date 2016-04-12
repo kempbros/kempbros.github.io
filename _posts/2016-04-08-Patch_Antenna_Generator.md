@@ -76,6 +76,11 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 							<input type="number" class="form-control" id="inputH" placeholder="1.5" value="1.5">
 						</div>
 
+						<label for="groundplaneScale" class="col-lg-2 control-label">Groundplane Scale Factor</label>
+						<div class="col-lg-10" style="padding-bottom: 1em;">
+							<input type="number" class="form-control" id="groundplaneScale" placeholder="4" value="4">
+						</div>
+
 						<label for="eagle_type">Antenna Type</label>
 						<select id="eagle_type">
 							<option value="rhp_patch">RHP Patch</option>
@@ -221,6 +226,8 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 		var ghz = parseFloat( $( '#inputGhz' ).val() );
 		var dc = parseFloat( $( '#inputDC' ).val() );
 		var inputH = parseFloat( $( '#inputH' ).val() );
+		var groundplaneScale = parseFloat( $( '#groundplaneScale' ).val() );
+
 		var c = 299792458;
 
 		antenna = {};
@@ -260,9 +267,9 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 
 		antenna.groundplane = {};
 
-		antenna.groundplane.width = antenna.width +( antenna.h*4);
+		antenna.groundplane.width = antenna.width +( antenna.h*4 groundplaneScale );
 
-		antenna.groundplane.length = antenna.length+( antenna.h * 4);
+		antenna.groundplane.length = antenna.length+( antenna.h * groundplaneScale );
 
 		antenna.coordinates = {
 			'feed': { 'X0': (antenna.groundplane.width * 1000 )/2,
