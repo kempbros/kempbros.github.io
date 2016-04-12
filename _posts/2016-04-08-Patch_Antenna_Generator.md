@@ -228,6 +228,10 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 		var inputH = parseFloat( $( '#inputH' ).val() );
 		var groundplaneScale = parseFloat( $( '#groundplaneScale' ).val() );
 
+		if ( groundplaneScale == '' ) {
+			groundplaneScale = Infinity;
+		}
+
 		var c = 299792458;
 
 		antenna = {};
