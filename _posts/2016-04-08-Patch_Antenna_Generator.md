@@ -267,7 +267,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 
 		antenna.groundplane = {};
 
-		antenna.groundplane.width = antenna.width +( antenna.h*4 groundplaneScale );
+		antenna.groundplane.width = antenna.width +( antenna.h * groundplaneScale );
 
 		antenna.groundplane.length = antenna.length+( antenna.h * groundplaneScale );
 
