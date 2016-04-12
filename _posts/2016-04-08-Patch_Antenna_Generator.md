@@ -60,12 +60,12 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 					<div class="form-group">
 						<label for="inputGhz" class="col-lg-2 control-label">Ghz</label>
 						<div class="col-lg-10" style="padding-bottom: 1em;">
-							<input type="number" class="form-control" id="inputGhz" placeholder="5.795" value="5.795">
+							<input type="number" class="form-control antenna_input" id="inputGhz" placeholder="5.795" value="5.795">
 						</div>
 
 						<label for="inputDC" class="col-lg-2 control-label">Dialectric Constant</label>
 						<div class="col-lg-10" style="padding-bottom: 1em;">
-							<input type="number" class="form-control" id="inputDC" placeholder="4.5" value="4.5">
+							<input type="number" class="form-control antenna_input" id="inputDC" placeholder="4.5" value="4.5">
 							<div class="well" style="display:none;">
 								The dielectric constant of FR4 (which is circuit board material) is typically 4.5
 							</div>
@@ -73,16 +73,16 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 
 						<label for="inputH" class="col-lg-2 control-label">Dielectric Height in mm</label>
 						<div class="col-lg-10" style="padding-bottom: 1em;">
-							<input type="number" class="form-control" id="inputH" placeholder="1.5" value="1.5">
+							<input type="number" class="form-control antenna_input" id="inputH" placeholder="1.5" value="1.5">
 						</div>
 
 						<label for="groundplaneScale" class="col-lg-2 control-label">Groundplane Scale Factor</label>
 						<div class="col-lg-10" style="padding-bottom: 1em;">
-							<input type="number" class="form-control" id="groundplaneScale" placeholder="4" value="4">
+							<input type="number" class="form-control antenna_input" id="groundplaneScale" placeholder="4" value="4">
 						</div>
 
 						<label for="eagle_type">Antenna Type</label>
-						<select id="eagle_type">
+						<select id="eagle_type" class="antenna_input">
 							<option value="rhp_patch">RHP Patch</option>
 							<option value="lhp_patch">LHP Patch</option>
 							<option value="lp_patch">Linear Patch</option>
@@ -451,6 +451,10 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 
 	$( '#generateAntenna' ).click( function( e ) {
 		e.preventDefault();
+		antenna = drawAntenna();
+	});
+
+	$( '.antenna_input' ).change( function() {
 		antenna = drawAntenna();
 	});
 
