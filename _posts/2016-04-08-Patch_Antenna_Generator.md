@@ -286,7 +286,9 @@ categories: [antennas]
 				y = '';
 				if ( antenna.coordinates[ coord_type ].hasOwnProperty( 'X' + step ) ) {
 					x = antenna.coordinates[ coord_type ][ 'X' + step ].toFixed( 2 );
+					antenna.coordinates[ coord_type ][ 'X' + step ] = x;
 					y = antenna.coordinates[ coord_type ][ 'Y' + step ].toFixed( 2 );
+					antenna.coordinates[ coord_type ][ 'Y' + step ] = y;
 				}
 
 				$( '#' + coord_type + '_X' + step ).html( x );
@@ -307,13 +309,11 @@ categories: [antennas]
 			eagle_scr += '(' + c.groundplane.X1 + ' ' + c.groundplane.Y1 + ') ';
 			eagle_scr += '(' + c.groundplane.X2 + ' ' + c.groundplane.Y2 + ') ';
 			eagle_scr += '(' + c.groundplane.X3 + ' ' + c.groundplane.Y3 + ') ';
-			eagle_scr += '(' + c.groundplane.X4 + ' ' + c.groundplane.Y4 + ') ';
 			eagle_scr += '(0 0)' + '\r';
 		eagle_scr += "POLYGON 'GND' 0.0 (" + c.groundplane.X0 + ' ' + c.groundplane.Y0 + ') ';
 			eagle_scr += '(' + c.groundplane.X1 + ' ' + c.groundplane.Y1 + ') ';
 			eagle_scr += '(' + c.groundplane.X2 + ' ' + c.groundplane.Y2 + ') ';
 			eagle_scr += '(' + c.groundplane.X3 + ' ' + c.groundplane.Y3 + ') ';
-			eagle_scr += '(' + c.groundplane.X4 + ' ' + c.groundplane.Y4 + ') ';
 			eagle_scr += '(0 0)' + '\r';
 		eagle_scr += "LAYER Top" + '\r';
 		eagle_scr += "POLYGON 'PATCH'"+ c.rhp_patch.X0 + ' ' + c.rhp_patch.Y0 + ') ';
