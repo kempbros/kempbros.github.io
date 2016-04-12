@@ -81,6 +81,7 @@ categories: [antennas]
 					<select id="eagle_type">
 						<option value="rhp_patch">RHP Patch</option>
 						<option value="lhp_patch">LHP Patch</option>
+						<option value="lp_patch">Linear Patch</option>
 					</select>
 				</p>
 				<p>
@@ -345,14 +346,19 @@ categories: [antennas]
 			eagle_scr += '(' + c[ type ].X1 + ' ' + c[ type ].Y1 + ') ';
 			eagle_scr += '(' + c[ type ].X2 + ' ' + c[ type ].Y2 + ') ';
 			eagle_scr += '(' + c[ type ].X3 + ' ' + c[ type ].Y3 + ') ';
-			eagle_scr += '(' + c[ type ].X4 + ' ' + c[ type ].Y4 + ') ';
-			eagle_scr += '(' + c[ type ].X5 + ' ' + c[ type ].Y5 + ') ';
 
-			if( type == 'lhp_patch' ) {
-				eagle_scr += '(' + c[ type ].X5 + ' ' + c[ type ].Y5 + ')' + '\r';
-			} else {
-				eagle_scr += '(' + c[ type ].Y5 + ' ' + c[ type ].X5 + ')' + '\r';
+			if ( type != 'lp_patch' ) {
+				eagle_scr += '(' + c[ type ].X4 + ' ' + c[ type ].Y4 + ') ';
+				eagle_scr += '(' + c[ type ].X5 + ' ' + c[ type ].Y5 + ') ';
+
+				if( type == 'lhp_patch' ) {
+					eagle_scr += '(' + c[ type ].X5 + ' ' + c[ type ].Y5 + ')';
+				} else {
+					eagle_scr += '(' + c[ type ].Y5 + ' ' + c[ type ].X5 + ')';
+				}			
 			}
+
+		eagle_scr += '\r';
 			
 		eagle_scr += "CHANGE DRILL 1" + '\r';
 		eagle_scr += "VIA 'PATCH' auto round" + ' (' + c.feed.X0 + ' ' + c.feed.Y0 + ')' + '\r';
