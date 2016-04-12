@@ -286,9 +286,9 @@ categories: [antennas]
 				y = '';
 				if ( antenna.coordinates[ coord_type ].hasOwnProperty( 'X' + step ) ) {
 					x = antenna.coordinates[ coord_type ][ 'X' + step ].toFixed( 2 );
-					antenna.coordinates[ coord_type ][ 'X' + step ] = x;
+					antenna.coordinates[ coord_type ][ 'X' + step ] = parseFloat( x );
 					y = antenna.coordinates[ coord_type ][ 'Y' + step ].toFixed( 2 );
-					antenna.coordinates[ coord_type ][ 'Y' + step ] = y;
+					antenna.coordinates[ coord_type ][ 'Y' + step ] = parseFloat( y );
 				}
 
 				$( '#' + coord_type + '_X' + step ).html( x );
@@ -327,6 +327,7 @@ categories: [antennas]
 		eagle_scr += "VIA 'PATCH' auto round" + ' (' + c.feed.X0 + ' ' + c.feed.X1 + ')' + '\r';
 		eagle_scr += "RATSNEST";
 
+		$( '#eagle' ).html( '' );
 		$( '#eagle' ).html( eagle_scr );
 
 
