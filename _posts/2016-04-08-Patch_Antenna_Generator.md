@@ -347,7 +347,13 @@ categories: [antennas]
 			eagle_scr += '(' + c[ type ].X3 + ' ' + c[ type ].Y3 + ') ';
 			eagle_scr += '(' + c[ type ].X4 + ' ' + c[ type ].Y4 + ') ';
 			eagle_scr += '(' + c[ type ].X5 + ' ' + c[ type ].Y5 + ') ';
-			eagle_scr += '(' + c[ type ].Y5 + ' ' + c[ type ].X5 + ')' + '\r';
+
+			if( type == 'lhp_patch' ) {
+				eagle_scr += '(' + c[ type ].X5 + ' ' + c[ type ].Y5 + ')' + '\r';
+			} else {
+				eagle_scr += '(' + c[ type ].Y5 + ' ' + c[ type ].X5 + ')' + '\r';
+			}
+			
 		eagle_scr += "CHANGE DRILL 1" + '\r';
 		eagle_scr += "VIA 'PATCH' auto round" + ' (' + c.feed.X0 + ' ' + c.feed.Y0 + ')' + '\r';
 		eagle_scr += "RATSNEST";
@@ -367,7 +373,13 @@ categories: [antennas]
 		svg.attr( "width", c.groundplane.X1 );
 		svg.attr( "height", c.groundplane.Y1 );
 
-		
+		patch_polygon = [];
+
+
+		for ( var coord in c[ type ] ) {
+
+		}
+
 
 	}
 
