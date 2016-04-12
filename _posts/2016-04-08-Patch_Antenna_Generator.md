@@ -38,6 +38,14 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 		padding-top: 1em;
 	}
 
+	#antenna_container {
+		display: inline-block;
+		vertical-align: top;
+		text-align: center;
+		padding-left: 1em;
+		padding-top: 1em;
+	}
+
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -81,7 +89,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 				</fieldset>
 			</form>
 		</div>
-		<div id="antenna_container" style="display: inline-block; margin: auto; vertical-align: top; padding-left: 25%; padding-top: 25%;">
+		<div id="antenna_container" >
 			<svg id="antenna_svg">
 				<g id="antenna_patch_group" transform="scale( 3.543307 )"></g>				
 			</svg>
@@ -386,9 +394,20 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 	function create_svg( antenna ) {
 		// Clear out the old patch
 		$( '#antenna_patch_group' ).html( '' );
+
+		$( '#antenna_container' ).attr( 'style', '' );
+
 		type = $( '#eagle_type' ).val();
+		ghz = parseFloat( $( '#inputGhz' ).val() );
 		svg = d3.select( '#antenna_svg' );
 		antenna_patch_group = d3.select( '#antenna_patch_group' );
+
+		if ( ghz < 1 ) {
+			$( '#antenna_container' ).hide();
+		} else {
+			$( '#antenna_container' ).show();
+		}
+
 
 		c = antenna.coordinates;
 
@@ -413,6 +432,9 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 			.attr( 'points', patch_polygon.join( ' ' ) )
 			.attr( 'stroke','black' )
 			.attr( 'stroke-width',2 );
+
+
+		//$( '#antenna_container' ).attr( 'style', 'padding-left: 25%; padding-top: 25%;' );
 	}
 
 
