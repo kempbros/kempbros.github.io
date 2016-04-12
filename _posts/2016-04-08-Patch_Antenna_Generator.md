@@ -7,6 +7,16 @@ tags: [patch anntenna rf electromagnetic radiation spectrum]
 categories: [antennas]
 ---
 
+<!--
+Patch Antenna Generator (c) by Benjamin Kemp
+
+Patch Antenna Generator is licensed under a
+Creative Commons Attribution 3.0 Unported License.
+
+You should have received a copy of the license along with this
+work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
+-->
+
 <style>
 	table {
 		border-collapse: collapse;
@@ -266,7 +276,9 @@ categories: [antennas]
 						'X2': (((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2)+(antenna.width * 1000 ),
 						'Y2': (((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2)+(antenna.length * 1000 ),
 						'X3': ((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2,
-						'Y3': (((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2)+(antenna.length * 1000 )
+						'Y3': (((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2)+(antenna.length * 1000 ),
+						'X4': ((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2,
+						'Y4': ((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2
 					},
 			'rhp_patch': { 'X0': (((antenna.groundplane.width * 1000 )-(antenna.width * 1000 ))/2)+(antenna.corner_a * 1000 ),
 						'Y0': ((antenna.groundplane.length * 1000 )-(antenna.length * 1000 ))/2,
@@ -347,9 +359,9 @@ categories: [antennas]
 			eagle_scr += '(' + c[ type ].X1 + ' ' + c[ type ].Y1 + ') ';
 			eagle_scr += '(' + c[ type ].X2 + ' ' + c[ type ].Y2 + ') ';
 			eagle_scr += '(' + c[ type ].X3 + ' ' + c[ type ].Y3 + ') ';
+			eagle_scr += '(' + c[ type ].X4 + ' ' + c[ type ].Y4 + ') ';
 
 			if ( type != 'lp_patch' ) {
-				eagle_scr += '(' + c[ type ].X4 + ' ' + c[ type ].Y4 + ') ';
 				eagle_scr += '(' + c[ type ].X5 + ' ' + c[ type ].Y5 + ') ';
 
 				if( type == 'lhp_patch' ) {
