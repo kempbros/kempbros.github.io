@@ -320,7 +320,7 @@ categories: [antennas]
 			eagle_scr += '(' + c.groundplane.X3 + ' ' + c.groundplane.Y3 + ') ';
 			eagle_scr += '(0 0)' + '\r';
 		eagle_scr += "LAYER Top" + '\r';
-		eagle_scr += "POLYGON 'PATCH'"+ c.rhp_patch.X0 + ' ' + c.rhp_patch.Y0 + ') ';
+		eagle_scr += "POLYGON 'PATCH' 0.0 ("+ c.rhp_patch.X0 + ' ' + c.rhp_patch.Y0 + ') ';
 			eagle_scr += '(' + c.rhp_patch.X1 + ' ' + c.rhp_patch.Y1 + ') ';
 			eagle_scr += '(' + c.rhp_patch.X2 + ' ' + c.rhp_patch.Y2 + ') ';
 			eagle_scr += '(' + c.rhp_patch.X3 + ' ' + c.rhp_patch.Y3 + ') ';
