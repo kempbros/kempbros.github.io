@@ -46,7 +46,6 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 		padding-top: 1em;
 	}
 
-
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -96,8 +95,8 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 			</form>
 		</div>
 		<div id="antenna_container" class="antenna_svg">
-			<svg id="antenna_svg" transform="" style="border: 1px solid black;">
-				<g id="antenna_patch_group" transform="scale( 3.543307 ) scale( -1,1 )"></g>
+			<svg id="antenna_svg" style="border: 1px solid black;" xmlns="http://www.w3.org/2000/svg" version="1.1">
+				<g id="antenna_patch_group"></g>
 				<circle id="antenna_drill" fill="white" />			
 			</svg>
 		</div>
@@ -426,6 +425,15 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 		}
 
 
+		// SVG and Eagle Script have flipped cooridnate systems
+		// scale( -1, 1 ) throws things off a bit, maybe due rounding?
+		// So, just swicth lhp with rhp and vise versa
+		if( type == 'lhp_patch' ) {
+			type = 'rhp_patch'
+		} else if ( type == 'rhp_patch' ) {
+			type = 'lhp_patch'
+		}
+
 		c = antenna.coordinates;
 
 		height = c.groundplane.Y2;
@@ -433,6 +441,8 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 
 		svg.attr( "width", width + 'mm' );
 		svg.attr( "height", height + 'mm' );
+		svg.attr( 'viewBox', '0 0 ' + width + ' ' + height );
+
 
 
 		patch_polygon = [];
@@ -440,7 +450,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 
 		[0,1,2,3,4,5].forEach( function( step ) {
 			if ( c[ type ].hasOwnProperty( 'X' + step ) ) {
-				patch_polygon.push( c[ type ][ 'X' + step ].toFixed( 2 ) + ',' + c[ type ][ 'Y' + step ].toFixed( 2 ) );
+				patch_polygon.push( c[ type ][ 'X' + step ] + ',' + c[ type ][ 'Y' + step ] );
 			}
 
 		})
@@ -453,12 +463,11 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 			.attr( 'stroke','black' )
 			.attr( 'stroke-width',2 );
 
-		$( '#antenna_drill' ).attr( 'cy', ( height - c.feed.Y0 ) + 'mm');
-		$( '#antenna_drill' ).attr( 'cx', ( width - c.feed.X0 ) + 'mm' );
-		$( '#antenna_drill' ).attr( 'r', '1mm' );
+		$( '#antenna_drill' ).attr( 'cy', ( height - c.feed.Y0 ) + '');
+		$( '#antenna_drill' ).attr( 'cx', ( width - c.feed.X0 ) + '' );
+		$( '#antenna_drill' ).attr( 'r', '1' );
 
 		//antenna_patch_group.attr( 'transform', 'scale( 3.543307 ) ' + 'rotate( 180 ' + ( width / 2 ) + ' ' + ( height / 2 ) + ' )' );
-		antenna_patch_group.attr( 'transform', 'scale( 3.543307 ) scale( -1 1) translate( -' + width + ' 0 )' );
 
 		generate_save_svg_link();
  
@@ -497,12 +506,16 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 
 	function generate_save_svg_link() {
 		$( '#svg_download' ).remove();
-		
-		$( '#antenna_svg' ).attr({ version: '1.1' , xmlns:"http://www.w3.org/2000/svg"});
 		var svg = $( '#antenna_container' ).html();
 		var encodedSVG = window.btoa( svg );
 
-		$( '#antenna_container' ).append( $( '<a id="svg_download" href-lang="image/svg+xml" href="data:image/svg+xml;base64,\n' + encodedSVG + '" title="file.svg">Download</a>' ) );
+		filename = 'KempBros_' 
+					+ $( '#eagle_type option:selected' ).text().replace( ' ', '_' ) 
+					+ '_' 
+					+ $( '#inputGhz' ).val()
+					+ 'GHZ.svg';
+
+		$( '#antenna_container' ).append( $( '<a id="svg_download" href-lang="image/svg+xml" href="data:image/svg+xml;base64,\n' + encodedSVG + '" title="' + filename + '">Download (Right click this link)</a>' ) );
 	}
 </script>
 
