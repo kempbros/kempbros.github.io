@@ -38,13 +38,14 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 		padding-top: 1em;
 	}
 
-	#antenna_container {
+	.antenna_svg {
 		display: inline-block;
 		vertical-align: top;
 		text-align: center;
 		padding-left: 1em;
 		padding-top: 1em;
 	}
+
 
 </style>
 
@@ -94,11 +95,13 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 				</fieldset>
 			</form>
 		</div>
-		<div id="antenna_container" >
-			<svg id="antenna_svg">
-				<g id="antenna_patch_group" transform="scale( 3.543307 )"></g>				
+		<div id="antenna_container" class="antenna_svg">
+			<svg id="antenna_svg" transform="">
+				<g id="antenna_patch_group" transform="scale( 3.543307 ) scale( -1,1 )"></g>
+				<circle id="antenna_drill" fill="white" />			
 			</svg>
 		</div>
+		<div id="antenna_message" class="antenna_svg" style="display: none;">1 GHZ and below is a bit too large to display here.</div>
 	</div>
 
 	<br />
@@ -228,8 +231,9 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 		var inputH = parseFloat( $( '#inputH' ).val() );
 		var groundplaneScale = parseFloat( $( '#groundplaneScale' ).val() );
 
+
 		if ( groundplaneScale == '' ) {
-			groundplaneScale = Infinity;
+			groundplaneScale = 1;
 		}
 
 		var c = 299792458;
@@ -415,15 +419,20 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 
 		if ( ghz < 1 ) {
 			$( '#antenna_container' ).hide();
+			$( '#antenna_message' ).show();
 		} else {
 			$( '#antenna_container' ).show();
+			$( '#antenna_message' ).hide();
 		}
 
 
 		c = antenna.coordinates;
 
-		svg.attr( "width", c.groundplane.X1 + 'mm' );
-		svg.attr( "height", c.groundplane.Y2 + 'mm' );
+		height = c.groundplane.Y2;
+		width = c.groundplane.X1;
+
+		svg.attr( "width", width + 'mm' );
+		svg.attr( "height", height + 'mm' );
 
 
 		patch_polygon = [];
@@ -444,8 +453,13 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 			.attr( 'stroke','black' )
 			.attr( 'stroke-width',2 );
 
+		$( '#antenna_drill' ).attr( 'cy', ( height - c.feed.Y0 ) + 'mm');
+		$( '#antenna_drill' ).attr( 'cx', ( width - c.feed.X0 ) + 'mm' );
+		$( '#antenna_drill' ).attr( 'r', '2mm' );
 
-		//$( '#antenna_container' ).attr( 'style', 'padding-left: 25%; padding-top: 25%;' );
+		//antenna_patch_group.attr( 'transform', 'scale( 3.543307 ) ' + 'rotate( 180 ' + ( width / 2 ) + ' ' + ( height / 2 ) + ' )' );
+		antenna_patch_group.attr( 'transform', 'scale( 3.543307 ) scale( -1 1) translate( -' + width + ' 0 )' );
+ 
 	}
 
 
