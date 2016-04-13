@@ -6,7 +6,7 @@ modified: 2016-04-08
 tags: [patch anntenna rf electromagnetic radiation spectrum]
 categories: [antennas]
 image:
-	feature: handed_patch_antennas.jpg
+	feature: feature.jpg
 ---
 
 <!--
