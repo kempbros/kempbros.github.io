@@ -455,7 +455,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 
 		$( '#antenna_drill' ).attr( 'cy', ( height - c.feed.Y0 ) + 'mm');
 		$( '#antenna_drill' ).attr( 'cx', ( width - c.feed.X0 ) + 'mm' );
-		$( '#antenna_drill' ).attr( 'r', '2mm' );
+		$( '#antenna_drill' ).attr( 'r', '1mm' );
 
 		//antenna_patch_group.attr( 'transform', 'scale( 3.543307 ) ' + 'rotate( 180 ' + ( width / 2 ) + ' ' + ( height / 2 ) + ' )' );
 		antenna_patch_group.attr( 'transform', 'scale( 3.543307 ) scale( -1 1) translate( -' + width + ' 0 )' );
