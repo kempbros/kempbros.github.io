@@ -100,6 +100,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 				<circle id="antenna_drill" fill="white" />			
 			</svg>
 		</div>
+		<div id="svg_download_link_container" class="antenna_svg"></div>
 		<div id="antenna_message" class="antenna_svg" style="display: none;">1 GHZ and below is a bit too large to display here.</div>
 	</div>
 
@@ -465,7 +466,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 
 		$( '#antenna_drill' ).attr( 'cy', ( height - c.feed.Y0 ) + '');
 		$( '#antenna_drill' ).attr( 'cx', ( width - c.feed.X0 ) + '' );
-		$( '#antenna_drill' ).attr( 'r', '1' );
+		$( '#antenna_drill' ).attr( 'r', '2' );
 
 		//antenna_patch_group.attr( 'transform', 'scale( 3.543307 ) ' + 'rotate( 180 ' + ( width / 2 ) + ' ' + ( height / 2 ) + ' )' );
 
@@ -515,7 +516,8 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 					+ $( '#inputGhz' ).val()
 					+ 'GHZ.svg';
 
-		$( '#antenna_container' ).append( $( '<a id="svg_download" href-lang="image/svg+xml" href="data:image/svg+xml;base64,\n' + encodedSVG + '" title="' + filename + '">Download (Right click this link)</a>' ) );
+		$( '#svg_download_link_container' ).append( $( '<a id="svg_download" href-lang="image/svg+xml" href="data:image/svg+xml;base64,\n' + encodedSVG + '" title="' + filename + '">Download (Right click this link)</a>' ) );
+
 	}
 </script>
 
