@@ -44,6 +44,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 		text-align: center;
 		padding-left: 1em;
 		padding-top: 1em;
+		margin: 0 auto;
 	}
 
 </style>
@@ -109,10 +110,10 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 	<div class="row">
 		<div class="col-lg-12">
 			<fieldset>
-				<legend>Eagle Script</legend>
+				<legend>EAGLE Script</legend>
 				<textarea id="eagle" style="width: 100%;" rows="14"></textarea>
 				<p>
-					<button id="saveEagle" class="btn btn-primary">Save</button>
+					<button id="saveEAGLE" class="btn btn-primary">Save</button>
 				</p>
 			</fieldset>
 		</div>
@@ -426,7 +427,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 		}
 
 
-		// SVG and Eagle Script have flipped cooridnate systems
+		// SVG and EAGLE Script have flipped cooridnate systems
 		// scale( -1, 1 ) throws things off a bit, maybe due rounding?
 		// So, just swicth lhp with rhp and vise versa
 		if( type == 'lhp_patch' ) {
@@ -484,7 +485,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 		antenna = drawAntenna();
 	});
 
-	$( '#saveEagle' ).click( function( e ) {
+	$( '#saveEAGLE' ).click( function( e ) {
 		e.preventDefault();
 		save_eagle( $( '#eagle' ).html() );
 	});
@@ -505,6 +506,10 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 		tempElement.click();
 	}
 
+
+
+
+
 	function generate_save_svg_link() {
 		$( '#svg_download' ).remove();
 		var svg = $( '#antenna_container' ).html();
@@ -516,7 +521,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 					+ $( '#inputGhz' ).val()
 					+ 'GHZ.svg';
 
-		$( '#svg_download_link_container' ).append( $( '<a id="svg_download" href-lang="image/svg+xml" href="data:image/svg+xml;base64,\n' + encodedSVG + '" title="' + filename + '">Download (Right click this link)</a>' ) );
+		$( '#svg_download_link_container' ).append( $( '<a id="svg_download" download="' + filename + '" href-lang="image/svg+xml" href="data:image/svg+xml;base64,\n' + encodedSVG + '" title="' + filename + '">Download</a>' ) );
 
 	}
 </script>
