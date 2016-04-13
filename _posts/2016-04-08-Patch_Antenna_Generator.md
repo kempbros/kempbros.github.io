@@ -45,8 +45,6 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 		display: inline-block;
 		vertical-align: top;
 		text-align: center;
-		padding-left: 1em;
-		padding-top: 1em;
 		margin: 0 auto;
 	}
 
@@ -98,14 +96,27 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 				</fieldset>
 			</form>
 		</div>
-		<div id="antenna_container" class="antenna_svg">
-			<svg id="antenna_svg" style="border: 1px solid black;" xmlns="http://www.w3.org/2000/svg" version="1.1">
-				<g id="antenna_patch_group"></g>
-				<circle id="antenna_drill" fill="white" />			
-			</svg>
+	</div>
+
+	<br />
+
+	<div class="row">
+		<div class="col-lg-12">
+			<fieldset>
+				<legend>SVG</legend>
+				<div id="antenna_container" class="">
+					<svg id="antenna_svg" style="border: 1px solid black;" xmlns="http://www.w3.org/2000/svg" version="1.1">
+						<g id="antenna_patch_group"></g>
+						<circle id="antenna_drill" fill="white" />			
+					</svg>
+				</div>
+				<div id="svg_download_link_container" class="antenna_svg"></div>
+				<div id="antenna_message" class="antenna_svg" style="display: none;">1 GHZ and below is a bit too large to display here.</div>
+				<p>
+					<a id="saveSVG" class="btn btn-primary">Download</a>
+				</p>
+			</fieldset>
 		</div>
-		<div id="svg_download_link_container" class="antenna_svg"></div>
-		<div id="antenna_message" class="antenna_svg" style="display: none;">1 GHZ and below is a bit too large to display here.</div>
 	</div>
 
 	<br />
@@ -421,7 +432,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 		svg = d3.select( '#antenna_svg' );
 		antenna_patch_group = d3.select( '#antenna_patch_group' );
 
-		if ( ghz < 1 ) {
+		if ( ghz < .5 ) {
 			$( '#antenna_container' ).hide();
 			$( '#antenna_message' ).show();
 		} else {
@@ -510,11 +521,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 	}
 
 
-
-
-
 	function generate_save_svg_link() {
-		$( '#svg_download' ).remove();
 		var svg = $( '#antenna_container' ).html();
 		var encodedSVG = window.btoa( svg );
 
@@ -524,7 +531,12 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 					+ $( '#inputGhz' ).val()
 					+ 'GHZ.svg';
 
-		$( '#svg_download_link_container' ).append( $( '<a id="svg_download" download="' + filename + '" href-lang="image/svg+xml" href="data:image/svg+xml;base64,\n' + encodedSVG + '" title="' + filename + '">Download<p id="antenna_message" style="display: none;">1 GHZ and below is a bit too large to display here.</p></a>' ) );
+		$( '#saveSVG' ).attr( 'href-lang', 'image/svg+xml' );
+		$( '#saveSVG' ).attr( 'href', 'data:image/svg+xml;base64,\n' + encodedSVG );
+		$( '#saveSVG' ).attr( 'title', filename );
+		$( '#saveSVG' ).attr( 'download', filename );
+
+		//$( '#svg_download_link_container' ).append( $( '<a id="svg_download" download="' + filename + '" href-lang="image/svg+xml" href="data:image/svg+xml;base64,\n' + encodedSVG + '" title="' + filename + '">Download<p id="antenna_message" style="display: none;">1 GHZ and below is a bit too large to display here.</p></a>' ) );
 
 	}
 </script>
