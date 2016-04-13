@@ -521,7 +521,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 					+ $( '#inputGhz' ).val()
 					+ 'GHZ.svg';
 
-		$( '#svg_download_link_container' ).append( $( '<a id="svg_download" download="' + filename + '" href-lang="image/svg+xml" href="data:image/svg+xml;base64,\n' + encodedSVG + '" title="' + filename + '">Download</a>' ) );
+		$( '#svg_download_link_container' ).append( $( '<a id="svg_download" download="' + filename + '" href-lang="image/svg+xml" href="data:image/svg+xml;base64,\n' + encodedSVG + '" title="' + filename + '">Download<p id="antenna_message" style="display: none;">1 GHZ and below is a bit too large to display here.</p></a>' ) );
 
 	}
 </script>
