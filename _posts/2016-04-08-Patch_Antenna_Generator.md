@@ -96,7 +96,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 			</form>
 		</div>
 		<div id="antenna_container" class="antenna_svg">
-			<svg id="antenna_svg" transform="">
+			<svg id="antenna_svg" transform="" style="border: 1px solid black;">
 				<g id="antenna_patch_group" transform="scale( 3.543307 ) scale( -1,1 )"></g>
 				<circle id="antenna_drill" fill="white" />			
 			</svg>
@@ -459,6 +459,8 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 
 		//antenna_patch_group.attr( 'transform', 'scale( 3.543307 ) ' + 'rotate( 180 ' + ( width / 2 ) + ' ' + ( height / 2 ) + ' )' );
 		antenna_patch_group.attr( 'transform', 'scale( 3.543307 ) scale( -1 1) translate( -' + width + ' 0 )' );
+
+		generate_save_svg_link();
  
 	}
 
@@ -491,6 +493,16 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 		tempElement.target = '_blank';
 		tempElement.download = 'KempBros_Patch_Antenna_' + type + '.txt';
 		tempElement.click();
+	}
+
+	function generate_save_svg_link() {
+		$( '#svg_download' ).remove();
+		
+		$( '#antenna_svg' ).attr({ version: '1.1' , xmlns:"http://www.w3.org/2000/svg"});
+		var svg = $( '#antenna_container' ).html();
+		var encodedSVG = window.btoa( svg );
+
+		$( '#antenna_container' ).append( $( '<a id="svg_download" href-lang="image/svg+xml" href="data:image/svg+xml;base64,\n' + encodedSVG + '" title="file.svg">Download</a>' ) );
 	}
 </script>
 
