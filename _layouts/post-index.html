@@ -13,7 +13,25 @@
 {% include header.html %}
 
 <div id="main" role="main">
-  {{ content }}
+  <div id="index">
+    <!--h3><a href="{{ site.url}}/posts/">Recent Posts</a></h3-->
+    {% for post in site.posts limit:5 %}
+    <article>
+      {% if post.link %}
+        <h2 class="link-post"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></a></h2>
+      {% else %}
+        <h2><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{% if post.image.feature %}
+            <div class="entry-image-index">
+              <img src="{{ site.url }}/images/{{ post.image.feature }}" alt="{{ post.title }}">
+              {% if post.image.credit %}<div class="image-credit">Image source: <a target="_blank" href="{{ post.image.creditlink }}">{{ post.image.credit }}</a></div><!-- /.image-credit -->{% endif %}{{ post.title }}
+            </div>
+        {% endif %}</a></h2>
+        <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </div><!-- /#index -->
+    <!--{-{ content }}-->
 </div><!-- /#main -->
 
 {% include scripts.html %}

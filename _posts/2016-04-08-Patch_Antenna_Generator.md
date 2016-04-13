@@ -2,10 +2,12 @@
 layout: post
 title: Patch Antenna Generator
 description: "JavaScript patch antenna generator"
+modified: 2016-04-08
 tags: [patch anntenna rf electromagnetic radiation spectrum]
 categories: [antennas]
 image:
     feature: handed_patch_antennas.jpg
+excerpt: Create and export patch antenna plans in EAGLE and SVG
 ---
 
 <!--
@@ -54,7 +56,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
 
 <div id="content">
-	<div class="row">
+	<div class="half">
 		<div class="column" style="width: 40%; display: inline-block;">
 			<form class="form-horizontal">
 				<fieldset>
