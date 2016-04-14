@@ -20,12 +20,15 @@
       {% if post.link %}
         <h2 class="link-post"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></a></h2>
       {% else %}
-        <h2><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{% if post.image.feature %}
-            <div class="entry-image-index">
-              <img src="{{ site.url }}/images/{{ post.image.feature }}" alt="{{ post.title }}">
-              {% if post.image.credit %}<div class="image-credit">Image source: <a target="_blank" href="{{ post.image.creditlink }}">{{ post.image.credit }}</a></div><!-- /.image-credit -->{% endif %}{{ post.title }}
-            </div>
-        {% endif %}</a></h2>
+        <h2 style="margin-top: 0px !important;"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}" >{{ post.title }}</a></h2>
+        <p>
+			{% if post.image.feature %}
+	            <div class="entry-image-index" style="margin-top: 0px !important;">
+	              <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}" ><img src="{{ site.url }}/images/{{ post.image.feature }}" alt="{{ post.title }}"></a>
+	              {% if post.image.credit %}<div class="image-credit">Image source: <a target="_blank" href="{{ post.image.creditlink }}">{{ post.image.credit }}</a></div><!-- /.image-credit -->{% endif %}
+	            </div>
+        	{% endif %}
+        </p>
         <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
       {% endif %}
     </article>
