@@ -127,7 +127,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 				<legend>EAGLE Script</legend>
 				<textarea id="eagle" style="width: 100%;" rows="14"></textarea>
 				<p>
-					<button id="saveEAGLE" class="btn btn-primary">Save</button>
+					<button id="saveEAGLE" class="btn btn-primary">Download</button>
 				</p>
 			</fieldset>
 		</div>
