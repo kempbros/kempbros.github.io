@@ -41,9 +41,13 @@ While patch antennas are easy to make and have very low physical profiles, their
 	<figcaption>Homebrew patch ready for testing</figcaption>
 </figure>
 
+Ready to build your own? Awesome. We here at KempBros have done all of the hard work for you and created a complex patch antenna calculator for all of your coaxial-fed patch antenna needs. Just hit "Generate" to design your frequency specific LP or CP antenna. Enjoy!
+
+<a href="http://kempbros.github.io/antennas/Patch_Antenna_Generator/" align="center"></a>
+
 ## References:
-http://www.everythingrf.com/rf-calculators/microstrip-patch-antenna-calculator
-https://www.pasternack.com/t-calculator-microstrip-ant.aspx
-http://ijates.com/images/short_pdf/1408805121_P378-384.pdf
-http://www.ijecse.org/wp-content/uploads/2012/06/Volume-3Number-2PP-159-166x.pdf
-http://ijettjournal.org/volume-4/issue-4/IJETT-V4I4P340.pdf
+<a href="http://www.everythingrf.com/rf-calculators/microstrip-patch-antenna-calculator>"></a>
+<a href="https://www.pasternack.com/t-calculator-microstrip-ant.aspx"></a>
+<a href="http://ijates.com/images/short_pdf/1408805121_P378-384.pdf"></a>
+<a href="http://www.ijecse.org/wp-content/uploads/2012/06/Volume-3Number-2PP-159-166x.pdf"></a>
+<a href="http://ijettjournal.org/volume-4/issue-4/IJETT-V4I4P340.pdf"></a>
