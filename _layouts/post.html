@@ -13,9 +13,9 @@
 {% include header.html %}
 
 <div id="main" role="main">
-	{% include advertise.html %}
   <article class="hentry">
     <div class="entry-content">
+		{% include advertise.html %}
         {% if page.image.feature %}
             <div class="entry-image-index">
               <img src="{{ site.url }}/images/{{ page.image.feature }}" alt="{{ page.title }}">
