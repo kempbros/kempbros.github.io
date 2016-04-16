@@ -37,17 +37,17 @@ The monopole antenna we discussed earlier produces a waveform that is only on on
 While patch antennas are easy to make and have very low physical profiles, their design is very sensitive to the materials used, polarity required and location of the signal feed. Rather than leave the design of these antennas up to the manufacturers we decided to create a calculator and make our own. Because, you know, buying things is for suckers. You can now make one too by simply inputting your frequency, dielectric constant, material thickness and ground plane scale factor into our calculator and watch the magic happen.
 
 <figure class="half center">
-	<img src="/images/FPVPatch.jpg" alt="">
+	<a href="/images/FPVPatch.jpg"><img src="/images/FPVPatch.jpg" alt=""></a>
 	<figcaption>Homebrew patch ready for testing</figcaption>
 </figure>
 
 Ready to build your own? Awesome. We here at KempBros have done all of the hard work for you and created a complex patch antenna calculator for all of your coaxial-fed patch antenna needs. Just hit "Generate" to design your frequency specific LP or CP antenna. Enjoy!
 
-<a href="http://kempbros.github.io/antennas/Patch_Antenna_Generator/" align="center"></a>
+<http://kempbros.github.io/antennas/Patch_Antenna_Generator/>
 
 ## References:
-<a href="http://www.everythingrf.com/rf-calculators/microstrip-patch-antenna-calculator>"></a>
-<a href="https://www.pasternack.com/t-calculator-microstrip-ant.aspx"></a>
-<a href="http://ijates.com/images/short_pdf/1408805121_P378-384.pdf"></a>
-<a href="http://www.ijecse.org/wp-content/uploads/2012/06/Volume-3Number-2PP-159-166x.pdf"></a>
-<a href="http://ijettjournal.org/volume-4/issue-4/IJETT-V4I4P340.pdf"></a>
+<http://www.everythingrf.com/rf-calculators/microstrip-patch-antenna-calculator>
+<https://www.pasternack.com/t-calculator-microstrip-ant.aspx>
+<http://ijates.com/images/short_pdf/1408805121_P378-384.pdf>
+<http://www.ijecse.org/wp-content/uploads/2012/06/Volume-3Number-2PP-159-166x.pdf>
+<http://ijettjournal.org/volume-4/issue-4/IJETT-V4I4P340.pdf">
