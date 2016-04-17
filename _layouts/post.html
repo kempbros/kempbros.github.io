@@ -21,7 +21,6 @@
               {% if page.image.credit %}<div class="image-credit">Image source: <a target="_blank" href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></div><!-- /.image-credit -->{% endif %}
             </div>
         {% endif %}
-		{% include advertise.html %}
       <h1 class="post-title entry-title">{{ page.title }}</h1>
       {{ content }}
       <div id="comments_container" style="padding-top: 1em;">{% include disqus.html %}</div>
@@ -38,7 +37,7 @@
     {% if site.related_posts.size > 0 %}{% include read-more.html %}{% endif %}
   </article>
 </div><!-- /#main -->
-
+{% include advertise.html %}
 {% include scripts.html %}
 
 <div class="footer-wrapper">
