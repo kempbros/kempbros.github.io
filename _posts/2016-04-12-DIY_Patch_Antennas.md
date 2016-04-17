@@ -7,16 +7,8 @@ tags: [patch anntenna rf electromagnetic radiation spectrum fpv EAGLE script scr
 categories: [Antennas]
 image:
     feature: handed_patch_antennas.png
+excerpt: Thinking about using a patch antenna with your FPV setup? Well, you might want to read this...
 ---
-
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-      {{ post.excerpt }}
-    </li>
-  {% endfor %}
-</ul>
 
 ## Rubber duck vs Patch:
 When first getting into the wonderful world of FPV (first person view) you often start off with two monopole “rubber duck” antennas that are provided with your setup. These antennas are very inexpensive to manufacture as they often are made out of the coaxial wire itself with a small bit of the shielding removed at the end, forming the antenna. What you will discover is that these antennas produce an omnidirectional signal pattern roughly in the shape of a toroid (kind of like a doughnut) and have a signal that is linearly polarized. In Layman's terms, you have to have your antenna receive (Rx) in the same orientation as your transmitter (Tx) in order to get the clearest signal. While your Rx is sensitive enough to not really care about antenna orientation when your Tx is close by, the farther away you get, or the more obstacles you have between you and your Tx, the more loss you have.
