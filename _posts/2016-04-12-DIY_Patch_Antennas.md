@@ -5,7 +5,8 @@ description:
 modified: 2016-04-12
 tags: [patch anntenna rf electromagnetic radiation spectrum fpv EAGLE script scr]
 categories: [Antennas]
-featured: handed_patch_antennas.png
+image:
+	feature: handed_patch_antennas.png
 excerpt: Thinking about using a patch antenna with your FPV setup? Well, you might want to read this...
 ---
 
