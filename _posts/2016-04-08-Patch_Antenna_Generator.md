@@ -6,7 +6,7 @@ modified: 2016-04-08
 tags: [patch anntenna rf electromagnetic radiation spectrum fpv EAGLE script scr]
 categories: [Antennas]
 image:
-    feature: handed_patch_antennas.jpg
+	feature: calculator.png
 excerpt: Check out this handy patch antenna generator and download designs in EAGLE Script and SVG
 ---
 
