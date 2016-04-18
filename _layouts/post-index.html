@@ -31,6 +31,7 @@
         </p>
         <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
       {% endif %}
+      {% include advertise.html %}
     </article>
     {% endfor %}
   </div><!-- /#index -->
