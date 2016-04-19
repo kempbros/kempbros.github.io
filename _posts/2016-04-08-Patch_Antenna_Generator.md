@@ -1,5 +1,6 @@
 ---
 layout: post
+author: benjamin
 title: Design your own patch antenna!
 description: "JavaScript patch antenna generator"
 modified: 2016-04-08
