@@ -14,14 +14,14 @@ excerpt: Thinking about using a patch antenna with your FPV setup? Well, you mig
 When first getting into the wonderful world of FPV (first person view) you often start off with two monopole “rubber duck” antennas that are provided with your setup. These antennas are very inexpensive to manufacture as they often are made out of the coaxial wire itself with a small bit of the shielding removed at the end, forming the antenna. What you will discover is that these antennas produce an omnidirectional signal pattern roughly in the shape of a toroid (kind of like a doughnut) and have a signal that is linearly polarized. In Layman's terms, you have to have your antenna receive (Rx) in the same orientation as your transmitter (Tx) in order to get the clearest signal. While your Rx is sensitive enough to not really care about antenna orientation when your Tx is close by, the farther away you get, or the more obstacles you have between you and your Tx, the more loss you have.
 
 <figure class="half center">
-	<a href="http://www.cisco.com/c/dam/en/us/products/collateral/wireless/aironet-antennas-accessories/prod_white_paper0900aecd806a1a3e.doc/_jcr_content/renditions/0900aecd806a1a3e_null_null_null_08_07_07-04.jpg"><img src="http://www.cisco.com/c/dam/en/us/products/collateral/wireless/aironet-antennas-accessories/prod_white_paper0900aecd806a1a3e.doc/_jcr_content/renditions/0900aecd806a1a3e_null_null_null_08_07_07-04.jpg" alt=""></a>
+	<a href="/images/Dipole_antenna_pattern_similar_to_monopole_-_Antenna_Patterns_and_Their_Meaning_Cisco_2007.jpg"><img src="/images/Dipole_antenna_pattern_similar_to_monopole_-_Antenna_Patterns_and_Their_Meaning_Cisco_2007.jpg" alt=""></a>
 	<figcaption>Dipole antenna pattern (similar to monopole) - Antenna Patterns and Their Meaning, Cisco 2007</figcaption>
 </figure>
 	
 Now, if you take all of that RF energy and point it in one direction (directional), rather than in all directions (omnidirectional) you can extend the range or permeability of your setup. A good analogy to this effect is talking through a plastic megaphone, or using one to listen through. You don’t change how much energy is used to create your voice, you just change how it's transmitted.
 
 <figure class="half center">
-	<a href="http://www.cisco.com/c/dam/en/us/products/collateral/wireless/aironet-antennas-accessories/prod_white_paper0900aecd806a1a3e.doc/_jcr_content/renditions/0900aecd806a1a3e_null_null_null_08_07_07-07.jpg"><img src="http://www.cisco.com/c/dam/en/us/products/collateral/wireless/aironet-antennas-accessories/prod_white_paper0900aecd806a1a3e.doc/_jcr_content/renditions/0900aecd806a1a3e_null_null_null_08_07_07-07.jpg" alt=""></a>
+	<a href="/images/Patch_antenna_pattern_similar_to_monopole_-_Antenna_Patterns_and_Their_Meaning_Cisco_2007.jpg"><img src="/images/Patch_antenna_pattern_similar_to_monopole_-_Antenna_Patterns_and_Their_Meaning_Cisco_2007.jpg" alt=""></a>
 	<figcaption>Patch antenna pattern (similar to monopole) - Antenna Patterns and Their Meaning, Cisco 2007</figcaption>
 </figure>
 
@@ -31,7 +31,7 @@ So why is a patch antenna the best for FPV you ask? ... Well it’s not necessar
 The monopole antenna we discussed earlier produces a waveform that is only on one axis, or linearly polarized (LP). You will notice the effect of this quite clearly with your RC Tx Rx where you can improve the range of your Tx simply by changing the orientation of your transmitter until the antennas align. An alternative to this linear polarization is to add a small instability to the means in which the signal is generated and the result is a waveform that travels in a circular pattern, or circularly polarized. This polarization can be clockwise (right hand - RHCP) or counterclockwise (left hand - LHCP) and is determined by the design of the antenna. For best results, you will want to use a Tx and Rx antenna with like polarization. Luckily for you, our calculator can produce all three LP, RHCP and LHCP.
 
 <figure class="half center">
-	<a href="http://hyperphysics.phy-astr.gsu.edu/hbase/phyopt/imgpho/polcls.gif"><img src="http://hyperphysics.phy-astr.gsu.edu/hbase/phyopt/imgpho/polcls.gif" alt=""></a>
+	<a href="/images/polcls.gif"><img src="/images/polcls.gif" alt=""></a>
 	<figcaption>Classification of Polarization - hyperphysics.phy-ast-gsu.edu</figcaption>
 </figure>
 
@@ -52,4 +52,4 @@ Ready to build your own? Awesome. We here at KempBros have done all of the hard 
 <https://www.pasternack.com/t-calculator-microstrip-ant.aspx>
 <http://ijates.com/images/short_pdf/1408805121_P378-384.pdf>
 <http://www.ijecse.org/wp-content/uploads/2012/06/Volume-3Number-2PP-159-166x.pdf>
-<http://ijettjournal.org/volume-4/issue-4/IJETT-V4I4P340.pdf">
+<http://ijettjournal.org/volume-4/issue-4/IJETT-V4I4P340.pdf>
