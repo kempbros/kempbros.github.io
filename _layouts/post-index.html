@@ -7,44 +7,38 @@
 {% include head.html %}
 </head>
 
-<body id="post-index">
+<body id="post-index" {% if page.image.feature %}class="feature"{% endif %}>
 
 {% include browser-upgrade.html %}
-{% include header.html %}
+{% include navigation.html %}
+
+<div class="entry-header">
+  {% if page.image.credit %}<div class="image-credit">Image source: <a href="{{ page.image.creditlink }}">{{ page.image.credit }}</a></div><!-- /.image-credit -->{% endif %}
+  {% if page.image.feature %}
+    <div class="entry-image">
+      <img src="{{ site.url }}/images/{{ page.image.feature }}" alt="{{ page.title }}">
+    </div><!-- /.entry-image -->
+  {% endif %}
+  <div class="header-title">
+    <div class="header-title-wrap">
+      <img src="/images/400logo.png" />
+      <!--h1>{{ site.title }}</h1>
+      <h2>{{ page.title }}</h2-->
+    </div><!-- /.header-title-wrap -->
+  </div><!-- /.header-title -->
+</div><!-- /.entry-header -->
 
 <div id="main" role="main">
-  <div id="index">
-    <!--h3><a href="{{ site.url}}/posts/">Recent Posts</a></h3-->
-    {% for post in site.posts limit:5 %}
-    <article>
-      {% if post.link %}
-        <h2 class="link-post"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> <a href="{{ post.link }}" target="_blank" title="{{ post.title }}"><i class="fa fa-link"></i></a></h2>
-      {% else %}
-        <h2 style="margin-top: 0px !important;"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}" >{{ post.title }}</a></h2>
-        <p>
-			{% if post.image.feature %}
-	            <div class="entry-image-index" style="margin-top: 0px !important;">
-	              <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}" ><img src="{{ site.url }}/images/{{ post.image.feature }}" alt="{{ post.title }}"></a>
-	              {% if post.image.credit %}<div class="image-credit">Image source: <a target="_blank" href="{{ post.image.creditlink }}">{{ post.image.credit }}</a></div><!-- /.image-credit -->{% endif %}
-	            </div>
-        	{% endif %}
-        </p>
-        <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
-      {% endif %}
-      {% include advertise.html %}
-    </article>
-    {% endfor %}
-  </div><!-- /#index -->
-    <!--{-{ content }}-->
+  {{ content }}
 </div><!-- /#main -->
-
-{% include scripts.html %}
 
 <div class="footer-wrapper">
   <footer role="contentinfo">
     {% include footer.html %}
   </footer>
 </div><!-- /.footer-wrapper -->
+
+{% include scripts.html %}          
 
 </body>
 </html>
