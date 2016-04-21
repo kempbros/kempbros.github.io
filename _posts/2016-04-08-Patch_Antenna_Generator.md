@@ -1,7 +1,7 @@
 ---
 layout: post
 author: benjamin
-title: Design your own patch antenna!
+title: Patch Antenna Generator
 description: "JavaScript patch antenna generator"
 modified: 2016-04-08
 tags: [patch anntenna rf electromagnetic radiation spectrum fpv EAGLE script scr]
