@@ -11,7 +11,7 @@ image:
 excerpt: Check out this handy patch antenna generator and download designs in EAGLE Script and SVG
 ---
 ## Overview
-We are certainly not an RF experts. We have worked with those and they hold a level of wizardry that we will never reach. That being said, we have done our best to produce a quality Patch Antenna Calculator designed specifically for FPV flight that is based on the research and calculations of experts. For links to the docs we used, check out this post: <http://kempbros.github.io/antennas/DIY_Patch_Antennas/>
+**We are not an RF experts**. They hold a level of wizardry that we will never reach. Rather we are merely inspired hobbiests looking to give back to the community. That being said, we have done our best to produce a quality Patch Antenna Calculator designed specifically for FPV flight that is based on the research and calculations of experts. For links to the docs we used, check out this post: <http://kempbros.github.io/antennas/DIY_Patch_Antennas/>
 
 ## To Use
 1. Set the frequency you would like to use. We set the default as 5.795Ghz, which is right in the middle of the channel range you would get from a radio like the TS5823
