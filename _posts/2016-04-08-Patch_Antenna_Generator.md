@@ -10,6 +10,18 @@ image:
     feature: calculator.png
 excerpt: Check out this handy patch antenna generator and download designs in EAGLE Script and SVG
 ---
+## Overview
+We are certainly not an RF experts. We have worked with those and they hold a level of wizardry that we will never reach. That being said, we have done our best to produce a quality Patch Antenna Calculator designed specifically for FPV flight that is based on the research and calculations of experts. For links to the docs we used, check out this post: <http://kempbros.github.io/antennas/DIY_Patch_Antennas/>
+
+## To Use
+1. Set the frequency you would like to use. We set the default as 5.795Ghz, which is right in the middle of the channel range you would get from a radio like the TS5823
+2. Set the dielectric constant of the material between the patch and the ground plane. If you are using PCB (commonly FR4) then your constant should be 4.5.
+3. Set the thickness of your dielectric. This is the thickness between the patch and the ground plane. Common PCB thickness is 1.575mm (0.062") and includes the thickness of copper. We used 1.5mm as default.
+4. Press "Generate"!
+
+What you should see now is two fold. First, you will see an SVG generated that you can use to etch a PCB by hand. Second is a script you can directly run within EAGLE PCB CAD software and manipulate the antenna as you see fit (remember to rename the file with an SCR extension). Lastly, make sure you use two sided PCB material, as you need the bottom layer ground plane.
+
+Once you have made your board, simply solder on a SMA pigtail and rock out to your new high-gain patch antenna!
 
 <!--
 Patch Antenna Generator (c) by Benjamin Kemp
@@ -20,7 +32,7 @@ Creative Commons Attribution 3.0 Unported License.
 You should have received a copy of the license along with this
 work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 -->
-
+## The Calculator
 <style>
 	table {
 		border-collapse: collapse;
