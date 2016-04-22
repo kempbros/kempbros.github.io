@@ -27,6 +27,8 @@ Once you have made your board, simply solder on a SMA pigtail and rock out to yo
 
 ## The Calculator
 
+**Use at your own risk. We guarantee nothing.**
+
 <!--
 Patch Antenna Generator (c) by Benjamin Kemp
 
