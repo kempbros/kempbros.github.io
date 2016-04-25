@@ -1,5 +1,6 @@
 ---
 layout: post
+author: Adam
 title: DIY patch antennas for longer range FPV
 description:
 modified: 2016-04-12

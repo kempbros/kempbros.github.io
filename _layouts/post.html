@@ -30,7 +30,7 @@
         {% else %}
           <h1 class="entry-title"><a href="{{ site.url }}{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a></h1>
         {% endif %}
-        <h2><span class="entry-date date published"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></span></h2>
+        <!-- h2><span class="entry-date date published"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></span></h2 -->
         {% if site.reading_time %}
         <p class="entry-reading-time">
           <i class="fa fa-clock-o"></i>
@@ -40,6 +40,14 @@
       </div><!-- /.header-title-wrap -->
     </header>
     <div class="entry-content">
+      <!-- Look the author details up from the site config. -->
+      {% assign author = site.data.authors[page.author] %}
+      {% if author %}
+          <span>
+              <img src="/images/{{ author.avatar }}" alt="A photo of {{ author.name }}" />
+              <a href="{{ author.web }}" target="_blank">{{ author.name }}</a> write this on {{ page.date | date: "%B %d, %Y" }}
+          </span>
+      {% endif %}
       {% include advertise.html %}
       {{ content }}
       {% include advertise_post_bottom.html %}
@@ -52,6 +60,7 @@
     </div><!-- /.entry-content -->
     {% if page.comments != false and site.disqus_shortname %}<section id="disqus_thread"></section><!-- /#disqus_thread -->{% endif %}
     {% if site.related_posts.size > 0 %}{% include read-more.html %}{% endif %}
+    {% include author-profile.html %}
   </article>
 </div><!-- /#main -->
 
