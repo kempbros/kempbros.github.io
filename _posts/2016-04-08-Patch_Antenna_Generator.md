@@ -158,7 +158,7 @@ work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
 			<table>
 				<thead>
 					<tr class="border_bottom">
-						<th class="border_right">Coordinates</th>
+						<th class="border_right">Coordinates (mm)</th>
 						<th class="border_right">X0</th>
 						<th class="border_right">Y0</th>
 						<th class="border_right">X1</th>
