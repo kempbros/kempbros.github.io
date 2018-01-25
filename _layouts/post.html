@@ -45,7 +45,7 @@
       {% if author %}
           <span style="padding-bottom: 12px;">
               <img src="/images/{{ author.avatar }}" alt="A photo of {{ author.name }}" />
-              <a href="{{ author.web }}" target="_blank">{{ author.name }}</a> write this on {{ page.date | date: "%B %d, %Y" }}
+              <a href="{{ author.web }}" target="_blank">{{ author.name }}</a> wrote this on {{ page.date | date: "%B %d, %Y" }}
           </span>
       {% endif %}
       {% include advertise.html %}
