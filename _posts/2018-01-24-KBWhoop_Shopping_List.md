@@ -7,7 +7,7 @@ modified: 2018-01-24
 tags: [quadcopter quad whoop tiny flysky fpv microquad racing]
 categories: [n-copters]
 image:
-    feature: kbwhoop.jpg
+    feature: kbwhoop.png
 excerpt: This quad is beyond fun. If you are tired of your sluggish E010/H36, or simply want a fun indoor FPV quadcopter, print our frame, install the electronics and get flying!
 ---
 ## Overview
