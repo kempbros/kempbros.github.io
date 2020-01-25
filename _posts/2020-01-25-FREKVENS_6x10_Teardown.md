@@ -5,7 +5,7 @@ title: IKEA/Teenage Engineering FREKVENS 6x10 Teardown
 description:
 modified: 2020-01-25
 tags: [ikea te teenage engineering teardown bluetooth tiny things]
-categories: [Bluetooth Audio]
+categories: [FREKVENS]
 image:
     feature: 00_6x10_title.jpg
 excerpt: IKEA FREKVENS 6x10 teardown
